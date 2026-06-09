@@ -1,12 +1,18 @@
 #include "winfetch.h"
+#include "moduls/cpu.h"
+#include "moduls/ram.h"
 #include "lib.h"
 
 void fetch(void) {
+    RamInfo ram = get_ram_info();
+    double usedRAM = ram.total - ram.free;
     char os[11];
     char gpu[50];
-    int ram;
 
-    printf("%s",cpu);
+    printf("%s", cpu_name());
+    for (int i; i < 10; i++) {
+        printf("ram:%.2fGB/%.2fGB\n", usedRAM, ram.total);
+    }
 };
 
 void winfetch(char *cmd) {
