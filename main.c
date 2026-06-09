@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <intrin.h>
-#include <windows.h>
+#include "src/winfetch.h"
 
 char* ascii =
         "  ++++++++++++++++++++++++++   ++++++++++++++++++++++++++  \n"
@@ -23,42 +20,6 @@ char* ascii =
         " +++++++++++++++++++++++++++   +++++++++++++++++++++++++++ \n"
         " +++++++++++++++++++++++++++   +++++++++++++++++++++++++++ \n"
         "  ++++++++++++++++++++++++++   ++++++++++++++++++++++++++  ";
-
-//fn init
-void prompt(void);
-
-void fetch(void) {
-    char os[11];
-    char cpu[49];
-    int cpu_info[4];
-    char gpu[50];
-    int ram;
-
-    __cpuid(cpu_info,0x80000002);
-    memcpy(cpu,cpu_info,16);
-    __cpuid(cpu_info,0x80000003);
-    memcpy(cpu + 16, cpu_info,16);
-    __cpuid(cpu_info,0x80000004);
-    memcpy(cpu + 32, cpu_info,16);
-
-    printf("%s",cpu);
-};
-
-void winfetch(char *cmd) {
-    if(strcmp(cmd, "winfetch") == 0) {
-        printf("debug\n");
-        fetch();
-    }else {
-        printf("try again\n");
-        prompt();
-    }
-}
-
-void prompt(void) {
-    char cmd[255];
-    scanf("%s", cmd);
-    winfetch(cmd);
-}
 
 int main(void) {
     prompt();
