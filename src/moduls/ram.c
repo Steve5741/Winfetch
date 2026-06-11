@@ -3,7 +3,7 @@
 #include "../lib.h"
 
 RamInfo get_ram_info() {
-    RamInfo result = {0.0, 0.0}; // Инициализируем нулями на случай ошибки
+    RamInfo result = {0.0, 0.0};
 
     MEMORYSTATUSEX memInfo;
     memInfo.dwLength = sizeof(MEMORYSTATUSEX);
@@ -12,6 +12,5 @@ RamInfo get_ram_info() {
         result.total = (double)memInfo.ullTotalPhys / (1024 * 1024 * 1024);
         result.free = (double)memInfo.ullAvailPhys / (1024 * 1024 * 1024);
     }
-
-    return result; // Возвращаем структуру с данными
+    return result;
 }
