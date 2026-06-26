@@ -2,25 +2,26 @@
 #include "moduls/cpu.h"
 #include "moduls/ram.h"
 #include "moduls/gpu.h"
+#include "moduls/PcInfo.h"
 #include "lib.h"
 
 void fetch(void) {
-    char os[11];
-    char gpu[50];
+    RamInfo Ram = Get_Ram_Info();
+    GpuInfo Gpu = Get_Gpu_Info();
+    CpuInfo Cpu = Get_Cpu_Info();
+    UserInfo User = Get_User_Name();
+    OsInfo Os = Get_OS_Info();
 
-    printf("%s\n", cpu_name());
-    printf("%s\n", gpu_name());
-    while (true) {
-        Sleep(1000);
-        RamInfo ram = get_ram_info();
-        double usedRAM = ram.total - ram.free;
-        printf("ram:%.2fGB/%.2fGB\n", usedRAM, ram.total);
-    }
+    printf("os: %s\n", Os);
+    printf("user:%s\n------------------------------\n", User.username);
+    printf("cpu: %s\n", Cpu.cpu);
+    printf("gpu: %s\n", Gpu.name);
+    printf("ram: %.2fGB/%.2fGB (%.2f%%)\n",Ram.used, Ram.total, Ram.percent);
+    printf("vram: %.0fMB\n", Gpu.vram);
 };
 
 void winfetch(char *cmd) {
     if(strcmp(cmd, "winfetch") == 0) {
-        printf("debug\n");
         fetch();
     }else {
         printf("try again\n");

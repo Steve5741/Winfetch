@@ -5,8 +5,10 @@
 typedef struct {
     double total;
     double free;
+    double percent;
+    double used;
 } RamInfo;
 
-RamInfo get_ram_info();
+RamInfo Get_Ram_Info();
 
 #endif //WINFETCH_RAM_H

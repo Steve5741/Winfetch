@@ -1,18 +1,15 @@
 #include "cpu.h"
 #include "../lib.h"
 
-char* cpu_name(void) {
-    int cpu_info[4];
-    static char cpu[49];
+CpuInfo Get_Cpu_Info(void) {
+    CpuInfo result = {0.0,0.0};
 
-    memset(cpu, 0, sizeof(cpu));
+    __cpuid(result.cpu_info,0x80000002);
+    memcpy(result.cpu,result.cpu_info,16);
+    __cpuid(result.cpu_info,0x80000003);
+    memcpy(result.cpu + 16, result.cpu_info,16);
+    __cpuid(result.cpu_info,0x80000004);
+    memcpy(result.cpu + 32, result.cpu_info,16);
 
-    __cpuid(cpu_info,0x80000002);
-    memcpy(cpu,cpu_info,16);
-    __cpuid(cpu_info,0x80000003);
-    memcpy(cpu + 16, cpu_info,16);
-    __cpuid(cpu_info,0x80000004);
-    memcpy(cpu + 32, cpu_info,16);
-
-    return cpu;
+    return result;
 }

@@ -9,5 +9,6 @@
 #include <intrin.h>
 #include <windows.h>
 #include <string.h>
+#include <lmcons.h>
 
 #endif //WINFETCH_LIB_H
