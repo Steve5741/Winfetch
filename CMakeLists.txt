@@ -16,5 +16,6 @@ add_executable(winfetch main.c
         src/ascii_icon.h
         src/moduls/PcInfo.h
         src/moduls/PcInfo.c
+        src/ascii-icon.c
 )
 target_link_libraries(winfetch PRIVATE dxgi)

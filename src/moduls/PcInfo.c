@@ -1,5 +1,6 @@
 
 #include "PcInfo.h"
+#include "../ascii_icon.h"
 #include "../lib.h"
 
 UserInfo Get_User_Name(void) {
@@ -62,19 +63,20 @@ OsInfo Get_OS_Info(void) {
     if (major == 10 && minor == 0) {
         if (build >= 22000) {
             snprintf(result.name, sizeof(result.name), "Windows 11");
+            printf("%s", win11);
         } else {
             snprintf(result.name, sizeof(result.name), "Windows 10");
+            printf("%s", win10_8);
         }
     } else if (major == 6 && minor == 3) {
         snprintf(result.name, sizeof(result.name), "Windows 8.1");
+        printf("%s", win10_8);
     } else if (major == 6 && minor == 2) {
         snprintf(result.name, sizeof(result.name), "Windows 8");
+        printf("%s", win10_8);
     } else if (major == 6 && minor == 1) {
         snprintf(result.name, sizeof(result.name), "Windows 7");
-    } else if (major == 6 && minor == 0) {
-        snprintf(result.name, sizeof(result.name), "Windows Vista");
-    } else if (major == 5 && minor == 1) {
-        snprintf(result.name, sizeof(result.name), "Windows XP");
+        printf("%s", win10_8);
     } else {
         snprintf(result.name, sizeof(result.name), "Windows Unknown");
     }
