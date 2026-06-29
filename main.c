@@ -1,6 +1,6 @@
 #include "src/winfetch.h"
 
 int main(void) {
-    prompt();
+    fetch();
     return 0;
 }

@@ -74,9 +74,6 @@ OsInfo Get_OS_Info(void) {
     } else if (major == 6 && minor == 2) {
         snprintf(result.name, sizeof(result.name), "Windows 8");
         printf("%s", win10_8);
-    } else if (major == 6 && minor == 1) {
-        snprintf(result.name, sizeof(result.name), "Windows 7");
-        printf("%s", win10_8);
     } else {
         snprintf(result.name, sizeof(result.name), "Windows Unknown");
     }
