@@ -43,9 +43,6 @@ cmake --build build
 - GPU name and VRAM
 - User and OS info
 - ASCII logos for Windows 8/8.1/10/11
-- Customizable colors
-- More system info (disk, network, uptime)
-- Configuration file support
 
 ## 🤝 Contributing
 Contributions are welcome! Feel free to:
